@@ -1,0 +1,13 @@
+<div class="container mt-5 ">
+    <div class="row">
+        {{#each courses}}
+        <div class="col-sm-4 ">
+            <a href="courses/{{this.slug}}" class="text-decoration-none text-black">
+                <img src={{this.image}} class="w-100 rounded-4 " alt="image">
+                <h5 class="mt-3">{{this.name}}</h5>
+            </a>
+            <p class="fs-6 ">{{this.learned}}</p>
+        </div>
+        {{/each}}
+    </div>
+</div>
