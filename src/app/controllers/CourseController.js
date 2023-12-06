@@ -1,4 +1,5 @@
 const Course = require('../models/Course')
+const mongoose = require('mongoose')
 
 class CourseController {
     // [GET] /courses
@@ -27,7 +28,12 @@ class CourseController {
 
 	// [POST] /courses/store
 	store(req, res, next) {
-		res.send('Course saved!')
+		const formData = req.body
+		const _id = new mongoose.Types.ObjectId()
+		const course = new Course({_id, ...formData})
+		course.save()
+			.then(() => res.redirect('/courses', 201))
+			.catch((error) => {next(error)})
 	}
 }
 
